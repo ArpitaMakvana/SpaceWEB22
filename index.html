@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore the Universe</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="loading-screen" aria-live="polite">
+      <div class="loading-ship">
+        <span></span>
+      </div>
+      <p>Launching into the cosmos...</p>
+    </div>
+
+    <div class="custom-cursor" aria-hidden="true">🚀</div>
+
+    <audio id="ambient-audio" loop>
+      <source
+        src="https://cdn.pixabay.com/download/audio/2021/11/10/audio_44f646692c.mp3?filename=space-ambient-110624.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+
+    <button class="audio-toggle" aria-label="Toggle ambient sound">
+      🔊 Ambient Sound
+    </button>
+
+    <header class="hero" id="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <p class="hero-tag">Mission Control // 2024</p>
+        <h1 class="hero-title">Explore the Universe</h1>
+        <p class="hero-subtitle">
+          Dive into the mysteries of galaxies, planets, and the bold missions that
+          expand humanity's cosmic reach.
+        </p>
+        <a href="#solar-system" class="cta">Start Exploring</a>
+      </div>
+      <div class="scroll-indicator">Scroll to launch</div>
+    </header>
+
+    <main>
+      <section class="section solar-system" id="solar-system">
+        <div class="section-header reveal">
+          <h2>Interactive Solar System</h2>
+          <p>Tap a planet to unlock its story.</p>
+        </div>
+        <div class="orbit-wrapper reveal" aria-label="Solar system planets"></div>
+      </section>
+
+      <section class="section planet-detail" id="planet-detail">
+        <div class="section-header reveal">
+          <h2>Planet Detail Station</h2>
+          <p>Track atmosphere, habitability, and live planet rotations.</p>
+        </div>
+        <div class="planet-tabs" role="tablist"></div>
+        <div class="planet-info-card reveal" aria-live="polite">
+          <div class="planet-visual">
+            <div class="planet-sphere"></div>
+          </div>
+          <div class="planet-info">
+            <h3 class="planet-name">Earth</h3>
+            <p class="planet-atmosphere"></p>
+            <p class="planet-habitable"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fact-generator" id="facts">
+        <div class="section-header reveal">
+          <h2>Space Fact Generator</h2>
+          <p>Press the button and receive a cosmic surprise.</p>
+        </div>
+        <div class="fact-card reveal">
+          <p id="fact-text"></p>
+          <div class="fact-actions">
+            <button id="generate-fact" class="cta">Generate Space Fact</button>
+            <button id="new-fact" class="ghost">New Fact</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section timeline" id="missions">
+        <div class="section-header reveal">
+          <h2>Space Missions Timeline</h2>
+          <p>Key milestones that reshaped humanity's presence in space.</p>
+        </div>
+        <div class="timeline-track reveal" aria-label="Space missions timeline"></div>
+      </section>
+
+      <section class="section astronauts" id="astronauts">
+        <div class="section-header reveal">
+          <h2>Astronaut Crew</h2>
+          <p>The explorers behind the missions.</p>
+        </div>
+        <div class="astronaut-grid reveal"></div>
+      </section>
+
+      <section class="section gallery" id="gallery">
+        <div class="section-header reveal">
+          <h2>Space Image Gallery</h2>
+          <p>Planets, galaxies, and nebulae captured across the universe.</p>
+        </div>
+        <div class="gallery-grid reveal"></div>
+      </section>
+
+      <section class="section clocks" id="clocks">
+        <div class="section-header reveal">
+          <h2>Live Space Clock</h2>
+          <p>Earth time and Mars time updated every second.</p>
+        </div>
+        <div class="clock-grid reveal">
+          <div class="clock-card">
+            <h3>Earth (UTC)</h3>
+            <p id="earth-time">00:00:00</p>
+          </div>
+          <div class="clock-card">
+            <h3>Mars Sol</h3>
+            <p id="mars-time">Sol 0 · 00:00:00</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section simulation" id="simulation">
+        <div class="section-header reveal">
+          <h2>Black Hole Gravity Simulation</h2>
+          <p>Drag the singularity to see particles bend toward it.</p>
+        </div>
+        <canvas id="gravity-canvas" width="900" height="500" aria-label="Black hole gravity simulation"></canvas>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <h2>Cosmic Credits</h2>
+        <p>
+          Built for cosmic curiosity. Imagery from NASA and ESA inspired
+          collections.
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="#hero">Back to top</a>
+        <a href="https://www.nasa.gov" target="_blank" rel="noreferrer">NASA</a>
+        <a href="https://esa.int" target="_blank" rel="noreferrer">ESA</a>
+      </div>
+    </footer>
+
+    <div class="modal" id="detail-modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-content" role="document">
+        <button class="modal-close" aria-label="Close modal">✕</button>
+        <div class="modal-body"></div>
+      </div>
+    </div>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox-close" aria-label="Close gallery">✕</button>
+      <button class="lightbox-nav prev" aria-label="Previous image">❮</button>
+      <img src="" alt="" id="lightbox-image" />
+      <button class="lightbox-nav next" aria-label="Next image">❯</button>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
